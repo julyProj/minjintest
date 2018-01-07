@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="julydb.product">
+
+<resultMap type="july.julyProj.min.model.ProductMo" id="ProductMo" autoMapping="true">
+	<result property="prodIdx" column="PROIDX" />
+	<result property="category" column="CATEGORY" />
+	<result property="product" column="PRODUCT" />
+	<result property="price" column="PRICE"/>
+	<result property="size" column="SIZE" />
+	<result property="useable" column="USEABLE" />
+</resultMap>
+ 
+<select id="getProductList" resultType="july.julyProj.min.model.ProductMo">
+	<![CDATA[
+		SELECT *
+		FROM productlist
+	]]>
+</select>
+
+<insert id="productInsert" parameterType="july.julyProj.min.model.ProductMo">
+	<![CDATA[
+		INSERT INTO productlist (CATEGORY, PRODUCT, PRICE, SIZE, USEABLE)
+		VALUES( #{Category}, #{Product}, #{Price}, #{Size}, #{Useable})
+	]]>
+</insert>
+
+</mapper>
